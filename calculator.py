@@ -1,7 +1,13 @@
 import tkinter as tk
 from tkinter import PhotoImage
-import math
 import os
+import math
+import cmath
+import numbers
+import decimal
+import fractions
+import random
+import statistics
 
 
 nameOfThisSoftware = 'ORIZIN　AIアシスタント Python式計算機'
