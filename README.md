@@ -6,4 +6,4 @@ AIアシスタント、ORIZINのPythonコードです。動作にはPython2系�
 また、使い方等の詳細は[wiki](https://github.com/Robot-Inventor/ORIZIN_Agent/wiki)や[公式ページ](https://robot-inventor.github.io/ORIZIN_Agent/)をご覧ください。
 
 ### 更新履歴  
-2019/06/09　v1.1dev開発開始;ORIZIN Agentの最初の開発版, 電卓機能の追加;クロスプラットフォーム化（音楽再生以外）
+2019/06/09　v1.1dev開発開始;ORIZIN Agentの最初の開発版, 電卓機能の追加;クロスプラットフォーム化（音楽再生以外）;発声のバックグラウンド化
