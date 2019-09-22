@@ -77,6 +77,7 @@ html, body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    height: 100%;
     width: 100vw;
 }
 
@@ -183,14 +184,12 @@ p {
 }
 
 footer {
+    display: inline-block;
+    vertical-align: middle;
     text-align: center;
     background-color: #000000;
     width: 100vw;
     height: 100px;
-}
-
-footer > p {
-    margin-top: 50px;
 }
 
 .no_color {
