@@ -1,7 +1,9 @@
 $(document).ready(function(){
     $('.slick').slick({
         autoplay: true,
-        fade: true,
-        focusOnSelect: true
+     　　adaptiveHeight: true,
+     　　arrows: true,
+    　 　prevArrow:'<div class="prev">PREV</div>',
+ 　    　nextArrow:'<div class="next">NEXT</div>'
     });
 });
