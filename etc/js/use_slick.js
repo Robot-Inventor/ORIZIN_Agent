@@ -1,6 +1,5 @@
 $(document).ready(function(){
-    $('.slide').slick({
-        adaptiveHeight: true,
+    $('.slick').slick({
         autoplay: true,
         fade: true,
         focusOnSelect: true
