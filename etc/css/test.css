@@ -185,11 +185,12 @@ p {
 footer {
     text-align: center;
     background-color: #000000;
+    width: 100vw;
     height: 100px;
 }
 
 footer > p {
-    margin-top: 0em;
+    margin-top: 50px;
 }
 
 .no_color {
