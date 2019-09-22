@@ -13,6 +13,8 @@
         <link rel="preload" href="/ORIZIN_Agent/etc/css/slick.min.css" as="style">
         <link rel="preload" href="https://code.jquery.com/jquery-3.2.1.min.js" as="script">
         <link rel="preload" href="/ORIZIN_Agent/etc/js/echo.min.js" as="script">
+        <link rel="preload" href="/ORIZIN_Agent/etc/js/slick.min.js" as="script">
+        <link rel="preload" href="/ORIZIN_Agent/etc/js/use_slick.min.js" as="script">
         <link rel="preload" href="/ORIZIN_Agent/etc/js/basic.min.js" as="script">
         <link rel="preload" href="/ORIZIN_Agent/etc/js/read_notice.min.js" as="script">
         <link rel="icon" type="image/x-icon" href="https://robot-inventor.github.io/ORIZIN_Agent/icon/favicon.ico">
@@ -40,9 +42,14 @@
         </header>
         <main>
             <br><br><br>
-            <div class="video">
-                <iframe src="/ORIZIN_Agent/icon/805.png" data-echo="https://www.youtube.com/embed/0nzVLpGwufw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="lazy"></iframe>
-            </div>
+            <div class="slick">
+                <div class="video">
+                    <iframe src="/ORIZIN_Agent/icon/805.svg" data-echo="https://www.youtube.com/embed/0nzVLpGwufw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="lazy"></iframe>
+                </div>
+                <div class="video">
+                    <iframe src="/ORIZIN_Agent/icon/805.svg" data-echo="https://www.youtube.com/embed/vYSxeFIwIlg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="lazy"></iframe>
+                </div>
+            </slick>
             <p>
                 <h1>オープンソース</h1>
                 ORIZIN Agent は、<a href="https://github.com/Robot-Inventor/ORIZIN_Agent/blob/master/LICENSE">MIT ライセンス</a>の下に GitHub 上で公開されている簡易的な AI アシスタントです。Linux® 上で動作します。その他の動作環境は、Wiki をご覧ください。<br><a href="https://github.com/Robot-Inventor/ORIZIN_Agent/wiki/動作環境について">Wiki</a>
@@ -81,6 +88,7 @@
         <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
         <script async src='/ORIZIN_Agent/etc/js/echo.min.js'></script>
         <script async src='/ORIZIN_Agent/etc/js/slick.min.js'></script>
+        <script async src='/ORIZIN_Agent/etc/js/use_slick.min.js'></script>
         <script async src="/ORIZIN_Agent/etc/js/basic.min.js"></script>
         <script async src="/ORIZIN_Agent/etc/js/read_notice.min.js"></script>
     </body>
