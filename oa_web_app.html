@@ -60,7 +60,7 @@
                     alert("お使いのブラウザは音声合成に対応していません。最新のバージョンに更新するか，それでもこのメッセージが表示される場合は他のブラウザをご利用ください。");
                 }
                 const requestForm = document.querySelector('#requestForm');
-                const startButton = document.querySelector('#startButton')
+                const startButton = document.querySelector('#startButton');
                 startButton.addEventListener('click', function() {
                     const content = new SpeechSynthesisUtterance(requestForm.value);
                     speechSynthesis.speak(content);
