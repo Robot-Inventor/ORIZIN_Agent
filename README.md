@@ -5,6 +5,8 @@ AIアシスタント、ORIZINのPythonコードです。動作にはPython3系�
 
 また、使い方等の詳細は[wiki](https://github.com/Robot-Inventor/ORIZIN_Agent/wiki)や[公式ページ](https://robot-inventor.github.io/ORIZIN_Agent/)をご覧ください。
 
+<iframe src="https://www.youtube.com/embed/0nzVLpGwufw" width="100%" height="auto"></iframe>
+
 ### 更新履歴  
 2019/06/09　v1.0公開;ORIZIN Agentの最初の安定版  
 2019/06/16　バージョン番号の表記をv1.0からv1.0.0.0に変更  
