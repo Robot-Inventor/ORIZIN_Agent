@@ -1,4 +1,4 @@
-![ORIZIN Agent](https://raw.githubusercontent.com/Robot-Inventor/ORIZIN_Agent/gh-pages/icon/ORIZIN_Agent_%E5%85%AC%E5%BC%8F%E3%82%B5%E3%82%A4%E3%83%88_%E3%83%AD%E3%82%B4_%E3%83%98%E3%83%83%E3%83%80%E3%83%BC.png)
+![ORIZIN Agent](https://robot-inventor.github.io/ORIZIN_Agent/icon/header_image.svg)
 # v1.0.0.0-Mercury
 AIアシスタント、ORIZINのPythonコードです。動作にはPython3系が必要です。
 
