@@ -58,12 +58,10 @@
                 recognition.onresult = (event) => {
                     speechSynthesis.speak(new SpeechSynthesisUtterance(event.results[0][0].transcript));
                 }
-
-  recognition.start();
+                recognition.start();
             }
             jQuery(function() {
                 alert("あなたがアクセスしようとしているページは，現在実装作業中です。将来的にはORIZIN Agentが完全に動くようになる予定ですが，現在はまだ使用できる段階ではありません。それをご理解いただいた上で閲覧・ご利用ください。");
-                SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
                 if ('webkitSpeechRecognition' in window) {
                 } else {
                     alert("お使いのブラウザは音声認識に対応していません。");
@@ -82,6 +80,7 @@
                 background: transparent;
                 color: #ff6a00;
                 transition: 0.3s;
+                border-radius: 2em;
             }
             button:active {
                 background: #ff6a00;
