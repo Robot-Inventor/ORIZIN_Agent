@@ -1,91 +1,118 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
     <head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-140830854-2"></script>
-        <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'UA-140830854-2');
-        </script>
-        <link rel="preload" href="/ORIZIN_Agent/etc/css/main_style.min.css" as="style">
-        <link rel="preload" href="https://code.jquery.com/jquery-3.2.1.min.js" as="script">
-        <link rel="preload" href="/ORIZIN_Agent/etc/js/echo.min.js" as="script">
-        <link rel="preload" href="/ORIZIN_Agent/etc/js/basic.min.js" as="script">
-        <link rel="preload" href="/ORIZIN_Agent/etc/js/read_notice.min.js" as="script">
-        <link rel="icon" type="image/x-icon" href="https://robot-inventor.github.io/ORIZIN_Agent/icon/favicon.ico">
-        <link rel="shortcut icon" href="https://robot-inventor.github.io/ORIZIN_Agent/icon/favicon.ico">
-        <link rel="apple-touch-icon" sizes="180x180" href="https://robot-inventor.github.io/ORIZIN_Agent/icon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="https://robot-inventor.github.io/ORIZIN_Agent/icon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="194x194" href="https://robot-inventor.github.io/ORIZIN_Agent/icon/favicon-194x194.png">
-        <link rel="icon" type="image/png" sizes="192x192" href="https://robot-inventor.github.io/ORIZIN_Agent/icon/android-chrome-192x192.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="https://robot-inventor.github.io/ORIZIN_Agent/icon/favicon-16x16.png">
-        <link rel="manifest" href="https://robot-inventor.github.io/ORIZIN_Agent/icon/site.webmanifest">
-        <link rel="mask-icon" href="https://robot-inventor.github.io/ORIZIN_Agent/icon/safari-pinned-tab.svg" color="#d2691e">
-        <meta name="apple-mobile-web-app-title" content="ORIZIN Agent">
-        <meta name="application-name" content="ORIZIN Agent">
-        <meta name="msapplication-TileColor" content="#da532c">
-        <meta name="msapplication-TileImage" content="https://robot-inventor.github.io/ORIZIN_Agent/icon/mstile-144x144.png">
-        <meta name="theme-color" content="#333333">
+        <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" type="text/css" href="/ORIZIN_Agent/etc/css/main_style.min.css">
-        <title>ORIZIN Agent Web App</title>
-        <meta name="description" content="オープンソースのAIアシスタント、ORIZIN AgentのWEBアプリ版です。">
+        <meta http-equiv="Expires" content="86400">
+        <link rel="stylesheet" type="text/css" href="../css/layout.css">
+        <link rel="icon" href="../image/favicon.ico">
+        <title>ORIZIN Agent</title>
+        <meta name="description" content="オープンソースのAIアシスタント「ORIZIN_Agent」です。">
     </head>
     <body>
         <header>
         </header>
         <main>
-            <p>
-                <h1>ORIZIN Agent web app</h1>
-                ORIZIN Agent は、<a href="https://github.com/Robot-Inventor/ORIZIN_Agent/blob/master/LICENSE">MIT ライセンス</a>の下に GitHub 上で公開されている簡易的な AI アシスタントです。ORIZIN Agentの動作には通常Python等が必要ですが、このWEBアプリではJavascriptを有効にした最新のブラウザがあればORIZIN Agentを使用することができます。
-            </p>
-            <div>
-                <button type="button" onclick="run()">実行</button>
+            <div class="main_control_panel">
+                <div id="waiting">
+                  	<img src="../image/logo.svg" class="logo waiting_mark" id="start_recognition"><br>
+                    マークをクリックするかスペースキーを押して話しかけてみてください。
+                </div>
+                <div id="listening">
+                    <img src="../image/listening.svg" class="logo listening_mark"><br>
+                    マークをクリックするかスペースキーを押して話しかけてみてください。<br>
+                    音声認識中...
+                </div>
+            </div>
+            <div class="bottom_control_panel">
+                <textarea id="requestForm">ここにテキストを入力してください。現段階ではここに入力されたテキストを読み上げることしかできませんが，将来的にはここに入力されたテキストに対する応答を読み上げられるようになる予定です。</textarea>
+                <button type="button" id="startButton">実行</button>
+            </div>
+            <div class="bottom_control_panel" id="result_area">
             </div>
         </main>
-        <footer>
-        </footer>
-        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-        <script async src='/ORIZIN_Agent/etc/js/echo.min.js'></script>
-        <script async src="/ORIZIN_Agent/etc/js/basic.min.js"></script>
-        <script async src="/ORIZIN_Agent/etc/js/read_notice.min.js"></script>
+        <script src="../javascript/jquery-3.4.1.min.js"></script>
+        <script src="../javascript/basic.js"></script>
+        <script src="/eel.js"></script>
         <script>
-            function run() {
-                SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
-                const recognition = new SpeechRecognition();
-                recognition.onresult = (event) => {
-                    speechSynthesis.speak(new SpeechSynthesisUtterance(event.results[0][0].transcript));
-                }
-                recognition.start();
+            eel.expose(alert);
+            function start_speak(content) {
+                const script = new SpeechSynthesisUtterance(content);
+                speechSynthesis.speak(script);
             }
-            jQuery(function() {
-                alert("あなたがアクセスしようとしているページは，現在実装作業中です。将来的にはORIZIN Agentが完全に動くようになる予定ですが，現在はまだ使用できる段階ではありません。それをご理解いただいた上で閲覧・ご利用ください。");
-                if ('webkitSpeechRecognition' in window) {
-                } else {
-                    alert("お使いのブラウザは音声認識に対応していません。");
-                }
-                if ('speechSynthesis' in window) {
-                } else {
-                    alert("お使いのブラウザは音声合成に対応していません。");
+            async function response(content) {
+                let script = await eel.make_response(content)();
+                jQuery("#result_area").append(">>" + content + "<br>" + script + "<br>");
+                jQuery("#result_area").animate({
+                    scrollTop: jQuery(document).height()
+                },300);
+                start_speak(script);
+            }
+            const requestForm = document.querySelector('#requestForm');
+      　    const startButton = document.querySelector('#startButton');
+            startButton.addEventListener('click', function() {
+                response(requestForm.value);
+            });
+            SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
+            const recognition = new SpeechRecognition();
+            recognition.onresult = (event) => {
+                jQuery("#listening").fadeOut(300);
+                jQuery("#waiting").fadeIn(300);
+                response(event.results[0][0].transcript);
+            }
+            jQuery("#start_recognition").click(function() {
+                jQuery("#listening").fadeIn(300);
+                jQuery("#waiting").fadeOut(300);
+                recognition.start();
+            });
+            jQuery(document).keydown(function(e) {
+                switch (e.keyCode) {
+                    case 32:
+                    jQuery("#start_recognition").click();
+                    break;
                 }
             });
         </script>
         <style>
-            button {
-                width: 30vw;
-                height: 2em;
-                border: 2px solid #ff6a00;
-                background: transparent;
-                color: #ff6a00;
-                transition: 0.3s;
-                border-radius: 2em;
+            #requestForm {
+                width: 100%;
+                height: 80%;
+                border: 0;
+                background: rgba(0, 0, 0, 0);
+                color: var(--text);
+                margin: 0;
+                padding: 0;
+                resize: none;
             }
-            button:active {
-                background: #ff6a00;
-                color: white;
+            #startButton {
+                 width: 30%;
+                 height: 20%;
+                 margin: 0;
+                 padding: 0;
+                 background: var(--theme_color);
+                 border: 0;
+                 color: white;
+            }
+            #start_recognition {
+                transition: 0.3s;
+            }
+            #start_recognition:active {
+                transform: scale(0.9);
+            }
+            #result_area {
+                text-align: left;
+                overflow: scroll;
+            }
+            #result_area::-webkit-scrollbar {
+                display: none;
             }
         </style>
+        <!--
+        あぁ～あ。今日は2019/12/24，クリスマスイブ。まじで世の中リア充だらけ...。
+        いつからクリスマスはカップルでいちゃつくイベントになったんだ？そもそもクリスマスはそんなイベントではない。
+        カップルで勝手に楽しむなら楽しんでくれ。でも，それを我々に見せびらかして自慢するのだけはやめてくれ。
+
+        来年こそは彼女作ってやる！！ ヽ(`Д´)ﾉﾌﾟﾝﾌﾟﾝ
+        -->
     </body>
 </html>
