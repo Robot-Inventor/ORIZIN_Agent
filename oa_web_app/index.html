@@ -42,8 +42,7 @@
                 ORIZIN Agent は、<a href="https://github.com/Robot-Inventor/ORIZIN_Agent/blob/master/LICENSE">MIT ライセンス</a>の下に GitHub 上で公開されている簡易的な AI アシスタントです。ORIZIN Agentの動作には通常Python等が必要ですが、このWEBアプリではJavascriptを有効にした最新のブラウザがあればORIZIN Agentを使用することができます。
             </p>
             <div>
-                <textarea style="width: 100%; height: 50vh;" id="requestForm">ここに質問を入力してください。</textarea><br>
-                <button type="button" id="startButton">実行</button>
+                <button type="button" onclick="run()">実行</button>
             </div>
         </main>
         <footer>
@@ -53,19 +52,41 @@
         <script async src="/ORIZIN_Agent/etc/js/basic.min.js"></script>
         <script async src="/ORIZIN_Agent/etc/js/read_notice.min.js"></script>
         <script>
-            alert("あなたがアクセスしようとしているページは，現在実装作業中です。将来的にはORIZIN Agentが完全に動くようになる予定ですが，現在はまだ使用できる段階ではありません。それをご理解いただいた上で閲覧・ご利用ください。");
-            $(function() {
+            function run() {
+                SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
+                const recognition = new SpeechRecognition();
+                recognition.onresult = (event) => {
+                    speechSynthesis.speak(new SpeechSynthesisUtterance(event.results[0][0].transcript));
+                }
+
+  recognition.start();
+            }
+            jQuery(function() {
+                alert("あなたがアクセスしようとしているページは，現在実装作業中です。将来的にはORIZIN Agentが完全に動くようになる予定ですが，現在はまだ使用できる段階ではありません。それをご理解いただいた上で閲覧・ご利用ください。");
+                SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
+                if ('webkitSpeechRecognition' in window) {
+                } else {
+                    alert("お使いのブラウザは音声認識に対応していません。");
+                }
                 if ('speechSynthesis' in window) {
                 } else {
-                    alert("お使いのブラウザは音声合成に対応していません。最新のバージョンに更新するか，それでもこのメッセージが表示される場合は他のブラウザをご利用ください。");
+                    alert("お使いのブラウザは音声合成に対応していません。");
                 }
-                const requestForm = document.querySelector('#requestForm');
-                const startButton = document.querySelector('#startButton');
-                startButton.addEventListener('click', function() {
-                    const content = new SpeechSynthesisUtterance(requestForm.value);
-                    speechSynthesis.speak(content);
-                });
             });
         </script>
+        <style>
+            button {
+                width: 30vw;
+                height: 2em;
+                border: 2px solid #ff6a00;
+                background: transparent;
+                color: #ff6a00;
+                transition: 0.3s;
+            }
+            button:active {
+                background: #ff6a00;
+                color: white;
+            }
+        </style>
     </body>
 </html>
